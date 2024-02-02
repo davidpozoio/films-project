@@ -19,4 +19,11 @@ class SceneService (
         }
         return sceneRepository.save(scene)
     }
+
+    fun patch(scene: Scene): Scene{
+        val sceneToPatch = sceneRepository.findById(scene.id)?:
+        throw Exception("scene not found")
+
+        return sceneRepository.save(scene)
+    }
 }

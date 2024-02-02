@@ -3,7 +3,6 @@ package films.project.services
 import films.project.models.Character
 import films.project.repository.CharacterRepository
 import org.springframework.stereotype.Service
-import org.springframework.web.bind.annotation.RequestBody
 
 @Service
 class CharacterService (
@@ -11,5 +10,11 @@ class CharacterService (
 ){
     fun findAll() = characterRepository.findAll()
 
-    fun save(@RequestBody character: Character) = characterRepository.save(character)
+    fun save(character: Character) = characterRepository.save(character)
+
+    fun patch(character: Character): Character{
+        val characterToPatch = characterRepository.findById(character.id)?:
+        throw Exception("character not found")
+        return  characterRepository.save(character)
+    }
 }
