@@ -1,6 +1,5 @@
 server:
   #address: 192.168.18.40
-  address: 192.168.18.40
   port: 8082
   error:
     include-message: always
