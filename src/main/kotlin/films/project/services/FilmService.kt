@@ -14,6 +14,17 @@ class FilmService(
     fun patch(film: Film): Film{
         val filmToPatch = filmRepository.findById(film.id)?:
         throw Exception("film not found")
-        return  filmRepository.save(film)
+        filmToPatch.apply {
+            name = film.name
+            minutes = film.minutes
+            director = film.director
+        }
+        return  filmRepository.save(filmToPatch)
+    }
+
+    fun delete(id: Long?): Boolean{
+        val film = filmRepository.findById(id)?:throw Exception("film not found");
+        filmRepository.deleteById(id!!)
+        return true
     }
 }

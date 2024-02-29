@@ -1,5 +1,6 @@
 package films.project.models
 
+import com.fasterxml.jackson.annotation.JsonBackReference
 import com.fasterxml.jackson.annotation.JsonIgnore
 import jakarta.persistence.*
 
@@ -12,7 +13,10 @@ class Character {
 
     var name: String? = null
 
+    @JsonBackReference
     @ManyToOne
-    @JoinColumn(name = "film_id")
-    var film: Film? = null
+    @JoinColumn(name = "scene_id")
+    var scene: Scene? = null
+
+    var budget: Double? = null
 }
